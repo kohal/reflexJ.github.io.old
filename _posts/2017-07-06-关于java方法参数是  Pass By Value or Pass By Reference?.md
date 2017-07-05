@@ -30,7 +30,7 @@ public class MethodTest {
  
 ###hotspot jvm 的引用类型图
 
-![hotspot](../images/javaReference.png)
+![hotspot](/images/javaReference.png)
 
 > 使用 直接 指针 访问 方式 的 最大 好处 就是 速度 更快， 它 节省 了 一次 指针 定位 的 时间 开销， 由于 对象 的 访问 在 Java 中非 常 频繁， 因此 这类 开销 积少成多 后 也是 一项 非常 可观 的 执行 成本。
 
@@ -121,15 +121,15 @@ public class MethodTest {
 ```
  **简单分析一下**：
  
-  *  ![hotspot](../images/jvm栈帧.png)
+  *  ![hotspot](/images/jvm栈帧.png)
   *  >栈 帧（ Stack Frame） 是 用于 支持 虚拟 机 进行 方法 调用 和 方法 执行 的 数据 结构， 它是 虚拟 机 运行时 数据区 中的 虚拟 机 栈（ Virtual Machine Stack）[ 1] 的 栈 元素。
   
   *  >操 作数 栈（ Operand Stack） 也 常 称为 操作 栈， 它是 一个 后入 先出（ Last In First Out, LIFO） 栈。当 一个 方法 刚刚 开始 执行 的 时候， 这个 方法 的 操 作数 栈 是 空的， 在 方法 的 执行 过程中， 会有 各种 字节 码 指令 往 操 作数 栈 中 写入 和 提取 内容， 也就是 出 栈/ 入栈 操作。
   *  >字节 码 指令：**整数 加法 的 字节 码 指令 iadd**： 在 运行 的 时候 操 作数 栈 中最 接近 栈 顶的 两个 元素 已经 存入 了 两个 int 型 的 数值， 当 执行 这个 指令 时， 会 将 这 两个 int 值 出 栈 并 相加， 然后 将 相加 的 结果 入栈。
      * istore指令
-      ![istore](../images/istore.png)
+      ![istore](/images/istore.png)
      * istore指令
-      ![istore](../images/iload.png)
+      ![istore](/images/iload.png)
  
  
  *  >LocalVariableTable:局部 变 量表 是一 组 变量 值 存储 空间， 用于 存放 方法 参数 和 方法 内部 定义 的 局部 变量。
@@ -185,7 +185,7 @@ public class MethodTest {
          9: aload_1
         10: invokestatic  #4                  // Method addNum:(Ljava/lang/Integer;)V
         ```
-      ![aload](../images/aload.png)  
+      ![aload](/images/aload.png)  
     是将 main 栈帧中 局部变量表的第一个slot的a推至操作栈顶，执行addNum()栈帧时，看字节码 是new Integer(2) 后直接将栈顶引用值赋给b；
     
  ```
@@ -193,7 +193,7 @@ public class MethodTest {
          8: astore_0
      
   ```
-![astore](../images/astore.png)  
+![astore](/images/astore.png)  
 
 
 3. **java说到底还是 Pass By Value，只不过对于引用类型来说，value是堆中对象的地址；就是方法中的参数变量 是通过操作栈来传递的.**
