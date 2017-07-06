@@ -8,15 +8,15 @@
 {{ page.title }}
 ===============
 
-### guava学习note
 
-####Joiner 06-28
+#### Joiner 06-28
  
  
  1.用设置的text代替null，重写本方法防止重复调用
- 
- ``` 
+
+``` java
  public Joiner useForNull(final String nullText) {
+
     checkNotNull(nullText);
     return new Joiner(this) {
       @Override
@@ -35,11 +35,10 @@
       }
     };
   }
- ```
- 
+``` 
 2.重写size和get方法，将一个数组和两个object拼接成了一个Iterable，避免了Iterable的创建
 
-```
+```java
 private static Iterable<Object> iterable(
       final Object first, final Object second, final Object[] rest) {
     checkNotNull(rest);
@@ -69,7 +68,7 @@ private static Iterable<Object> iterable(
 
 2. **continue and break label** ：到label出继续循环 或者是跳出label处的循环
 
-```
+```java
 public static Splitter on(final String separator) {
     checkArgument(separator.length() != 0, "The separator may not be the empty string.");
     if (separator.length() == 1) {

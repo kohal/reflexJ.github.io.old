@@ -1,8 +1,9 @@
-###关于java方法参数是  Pass By Value or Pass By Reference？
 
+## 关于java方法参数是  Pass By Value or Pass By Reference？
 
-#### 起因，当然show code啦：
-```
+<br/>
+#### 起因，当然show code啦 ： ##
+```java
 public class MethodTest {
 
     public static void main(String[] args) {
@@ -25,19 +26,18 @@ public class MethodTest {
 * a是Integer 引用类型，在addNum() 重新赋值 2，但最后打印的结果还是为1？why，
 
 
-
  
- 
-###hotspot jvm 的引用类型图
+### hotspot jvm 的引用类型图
 
 ![hotspot](/images/javaReference.png)
 
-> 使用 直接 指针 访问 方式 的 最大 好处 就是 速度 更快， 它 节省 了 一次 指针 定位 的 时间 开销， 由于 对象 的 访问 在 Java 中非 常 频繁， 因此 这类 开销 积少成多 后 也是 一项 非常 可观 的 执行 成本。
 
-###1. **javap -verbose MethodTest**   javap生成的字节码
+>  使用 直接 指针 访问 方式 的 最大 好处 就是 速度 更快， 它 节省 了 一次 指针 定位 的 时间 开销， 由于 对象 的 访问 在 Java 中非 常 频繁， 因此 这类 开销 积少成多 后 也是 一项 非常 可观 的 执行 成本。
+
+### 1. **javap -verbose MethodTest**   javap生成的字节码
 
 
-```
+```java
  public static void main(java.lang.String[]);
     descriptor: ([Ljava/lang/String;)V
     flags: ACC_PUBLIC, ACC_STATIC
@@ -122,40 +122,41 @@ public class MethodTest {
  **简单分析一下**：
  
   *  ![hotspot](/images/jvm栈帧.png)
-  *  >栈 帧（ Stack Frame） 是 用于 支持 虚拟 机 进行 方法 调用 和 方法 执行 的 数据 结构， 它是 虚拟 机 运行时 数据区 中的 虚拟 机 栈（ Virtual Machine Stack）[ 1] 的 栈 元素。
+  *   >  栈 帧（ Stack Frame） 是 用于 支持 虚拟 机 进行 方法 调用 和 方法 执行 的 数据 结构， 它是 虚拟 机 运行时 数据区 中的 虚拟 机 栈（ Virtual Machine Stack）[ 1] 的 栈 元素。
   
-  *  >操 作数 栈（ Operand Stack） 也 常 称为 操作 栈， 它是 一个 后入 先出（ Last In First Out, LIFO） 栈。当 一个 方法 刚刚 开始 执行 的 时候， 这个 方法 的 操 作数 栈 是 空的， 在 方法 的 执行 过程中， 会有 各种 字节 码 指令 往 操 作数 栈 中 写入 和 提取 内容， 也就是 出 栈/ 入栈 操作。
-  *  >字节 码 指令：**整数 加法 的 字节 码 指令 iadd**： 在 运行 的 时候 操 作数 栈 中最 接近 栈 顶的 两个 元素 已经 存入 了 两个 int 型 的 数值， 当 执行 这个 指令 时， 会 将 这 两个 int 值 出 栈 并 相加， 然后 将 相加 的 结果 入栈。
+  *  >  操 作数 栈（ Operand Stack） 也 常 称为 操作 栈， 它是 一个 后入 先出（ Last In First Out, LIFO） 栈。当 一个 方法 刚刚 开始 执行 的 时候， 这个 方法 的 操 作数 栈 是 空的， 在 方法 的 执行 过程中， 会有 各种 字节 码 指令 往 操 作数 栈 中 写入 和 提取 内容， 也就是 出 栈/ 入栈 操作。
+  *  >  字节 码 指令：**整数 加法 的 字节 码 指令 iadd**： 在 运行 的 时候 操 作数 栈 中最 接近 栈 顶的 两个 元素 已经 存入 了 两个 int 型 的 数值， 当 执行 这个 指令 时， 会 将 这 两个 int 值 出 栈 并 相加， 然后 将 相加 的 结果 入栈。
      * istore指令
       ![istore](/images/istore.png)
      * istore指令
       ![istore](/images/iload.png)
  
  
- *  >LocalVariableTable:局部 变 量表 是一 组 变量 值 存储 空间， 用于 存放 方法 参数 和 方法 内部 定义 的 局部 变量。
+ *  >  LocalVariableTable:局部 变 量表 是一 组 变量 值 存储 空间， 用于 存放 方法 参数 和 方法 内部 定义 的 局部 变量。
 
 
  * **站在巨人的肩膀上**：
-  ```LocalVariableTable:
+  ```java	
+  LocalVariableTable:
         Start  Length  Slot  Name   Signature
             0      70     0     b   Ljava/lang/Integer;
-	```
+  ```
 	方法addNum（） 的slot 的第一个变量b 是Integer引用类型
 	
-	```
+	```java
 	 0: new           #2                  // class java/lang/Integer
          3: dup
          4: iconst_2
          5: invokespecial #3                  // Method java/lang/Integer."<init>":(I)V
          8: astore_0
          9: aload_0
-```
+	```
 这是  *b = new Integer(2)* 这个代码的字节码过程，iconst_2 是将int 2推至栈顶，之后就是调Integer的<init>方法 new 一个Integer对象，将其地址赋给引用变量 b（astore_0 指令）。
 
 
-####2. **idea反编译的class**
+#### 2. **idea反编译的class**
 
-```
+```java
 public class MethodTest {
     public MethodTest() {
     }
@@ -177,18 +178,20 @@ public class MethodTest {
 
 这里反编译 将 *Integer c = b + 3;* 优化成 *Integer c = Integer.valueOf(b.intValue() + 3);* ，通过字节码也能够看出
 
-####3. **回到最初的问题**
+#### 3. **回到最初的问题**
 1. main 方法中的变量 a的值为什么没变？
 2. 因为在main方法等 局部变量表中的a  一直引用堆中 value（还是final）是1的对象。
 而传给方法 addNum()
-```
-         9: aload_1
-        10: invokestatic  #4                  // Method addNum:(Ljava/lang/Integer;)V
-        ```
+
+     ```java
+     9: aload_1
+     10: invokestatic  #4                  // Method addNum:(Ljava/lang/Integer;)V
+     
+     ```
       ![aload](/images/aload.png)  
     是将 main 栈帧中 局部变量表的第一个slot的a推至操作栈顶，执行addNum()栈帧时，看字节码 是new Integer(2) 后直接将栈顶引用值赋给b；
     
- ```
+ ```java
          5: invokespecial #3                  // Method java/lang/Integer."<init>":(I)V
          8: astore_0
      
