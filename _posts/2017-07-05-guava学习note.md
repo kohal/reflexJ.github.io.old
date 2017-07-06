@@ -1,9 +1,9 @@
+---
+    layout: post
+    title: guava学习note
+---
 
 
----
-layout: post
-title: guava学习note
----
 
 {{ page.title }}
 ===============
