@@ -1,3 +1,11 @@
+---
+layout:post
+title:guava学习note
+---
+
+{{ page.title }}
+===============
+
 ### guava学习note
 
 ####Joiner 06-28
