@@ -63,7 +63,7 @@ private static Iterable<Object> iterable(
   }   
 ``` 
 
-####spliter  06-29
+#### spliter  06-29
 1. 策略模式的使用
 
 2. **continue and break label** ：到label出继续循环 或者是跳出label处的循环
