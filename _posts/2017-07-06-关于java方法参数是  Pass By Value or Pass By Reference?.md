@@ -32,7 +32,7 @@ public class MethodTest {
 ![hotspot](/images/javaReference.png)
 
 
->  使用 直接 指针 访问 方式 的 最大 好处 就是 速度 更快， 它 节省 了 一次 指针 定位 的 时间 开销， 由于 对象 的 访问 在 Java 中非 常 频繁， 因此 这类 开销 积少成多 后 也是 一项 非常 可观 的 执行 成本。
+>  使用直接指针访问方式的最大好处就是速度更快，它节省了一次指针定位的时间开销，由于对象的访问在Java中非常频繁，因此这类开销积少成多后也是一项非常可观的执行成本。
 
 ### 1. **javap -verbose MethodTest**   javap生成的字节码
 
