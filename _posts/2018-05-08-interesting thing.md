@@ -10,7 +10,8 @@
 
 1. fastJson 序列化问题 
     - 问题描述及原因：
-    ```java
+
+    ``` java
 
     public class Result<T> implements Serializable {
         public boolean isSuccess() {
@@ -20,6 +21,7 @@
 
     Result<Object> result = Result.success(new Object());
         System.out.println(JSON.toJSONString(result));
+        
     ```
 
     这个result的结果：
