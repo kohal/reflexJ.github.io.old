@@ -3,7 +3,7 @@
 　　title: 我的Blog
 ---
 ### 老生常谈jdk8下的HashMap
-1. > [美团的一篇文章](https://tech.meituan.com/java-hashmap.html)
+1. > [美团的一篇文章](https://tech.meituan.com/java_hashmap.html)
 
 
 2. 红黑树是满足下面三个性质的二叉搜索树：
@@ -14,3 +14,6 @@
 
 
 3. resize 并发下出现环链表的情况，get()方法，e.next会出现无限循环
+
+4. 针对HashMap线程不安全的问题，并发包下的ConcurrentHashMap可以解决这个问题：
+    > [java8下实现](https://yq.aliyun.com/articles/36781)
