@@ -43,6 +43,8 @@
     ```
 
 ## spring bean 实例化
+
+  - AbstractApplicationContext#refresh->finishBeanFactoryInitialization()->DefaultListableBeanFactory#preInstantiateSingletons->AbstractBeanFactory#doGetBean->AbstractAutowireCapableBeanFactory#createBean
   - instance的策略默认是cglib的
   ```java
     public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory
@@ -96,3 +98,7 @@
 
 
   ```
+
+
+## spring aop的bean织入
+   - AbstractAutowireCapableBeanFactory#initializeBean

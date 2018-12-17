@@ -1,6 +1,6 @@
 ---
     layout: post
-    title: socket
+    title: unix 并发模型到socket的漫谈
 ---
 
 # 并发到 i/o
